@@ -266,18 +266,7 @@
       <p style="color:#C7C2B4;">Loading updates…</p>
     </div>
 
-    <div class="donate-box">
-      <h3>Invest in Uganda's nutrition future</h3>
-      <p>We welcome partners and donors who want to support manufacturing, research and community nutrition programmes. You can send a contribution directly via Mobile Money, or reach out and let us know how you'd like to help.</p>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;margin:18px 0;">
-        <div style="background:rgba(0,0,0,.08);padding:14px 18px;border-radius:8px;">
-          <div style="font-weight:700;font-size:.85rem;">MTN Mobile Money</div>
-          <div style="font-size:1.05rem;font-weight:700;">+256 772 895 317</div>
-        </div>
-        <div style="background:rgba(0,0,0,.08);padding:14px 18px;border-radius:8px;">
-          <div style="font-weight:700;font-size:.85rem;">Airtel Money</div>
-          <div style="font-size:1.05rem;font-weight:700;">+256 701 764 705</div>
-        </div>
+    
       </div>
       <a href="#contact" class="btn btn-outline">Get In Touch To Donate</a>
     </div>
@@ -358,5 +347,28 @@
       document.getElementById('updatesFeed').innerHTML = '<p style="color:#C7C2B4;">Updates coming soon.</p>';
     });
 </script>
+  // handle contact form submission via AJAX so it never navigates away
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const status = document.getElementById('contactStatus');
+      const data = new FormData(contactForm);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+      .then(() => {
+        status.style.color = 'var(--forest)';
+        status.textContent = 'Thank you — your message has been sent!';
+        contactForm.reset();
+      })
+      .catch(() => {
+        status.style.color = 'crimson';
+        status.textContent = 'Something went wrong. Please try again or call us directly.';
+      });
+    });
+  }
 </body>
 </html>
