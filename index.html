@@ -322,6 +322,12 @@
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
   // load daily updates from content/updates.json (edited via /admin)
+  // load daily updates from content/updates.json (edited via /admin)
+  function resolveImagePath(img){
+    if (!img) return '';
+    if (img.startsWith('http') || img.startsWith('/')) return img;
+    return '/images/uploads/' + img;
+  }
   fetch('content/updates.json')
     .then(r => r.json())
     .then(data => {
@@ -330,7 +336,7 @@
       if (!posts.length){ feed.innerHTML = '<p style="color:#C7C2B4;">No updates posted yet.</p>'; return; }
       feed.innerHTML = posts.map(p => `
         <div class="update-post">
-          ${p.image ? `<img class="update-post-img" src="${p.image}" alt="${p.title}">` : ''}
+          ${p.image ? `<img class="update-post-img" src="${resolveImagePath(p.image)}" alt="${p.title}">` : ''}
           <div class="update-post-body">
             <div class="date">${new Date(p.date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</div>
             <h3>${p.title}</h3>
