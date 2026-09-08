@@ -119,16 +119,18 @@
   .updates-section .eyebrow{color:var(--gold-light);}
   .updates-section .lead{color:#C7C2B4;}
   .update-post{
+.update-post{
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.1);
     border-radius:var(--radius);
-    padding:22px;
+    overflow:hidden;
     margin-bottom:16px;
   }
+  .update-post .update-post-img{width:100%;height:220px;object-fit:cover;display:block;}
+  .update-post .update-post-body{padding:22px;}
   .update-post .date{color:var(--gold-light);font-size:.8rem;font-weight:700;letter-spacing:.02em;margin-bottom:6px;}
   .update-post h3{color:#fff;font-size:1.15rem;margin-bottom:8px;}
   .update-post p{color:#D3CFC2;font-size:.94rem;}
-  .update-post img{border-radius:8px;margin-top:12px;}
   .donate-box{
     margin-top:40px;background:var(--gold);color:var(--forest-dark);
     border-radius:var(--radius);padding:32px;
@@ -328,10 +330,12 @@
       if (!posts.length){ feed.innerHTML = '<p style="color:#C7C2B4;">No updates posted yet.</p>'; return; }
       feed.innerHTML = posts.map(p => `
         <div class="update-post">
-          <div class="date">${new Date(p.date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</div>
-          <h3>${p.title}</h3>
-          <p>${p.body}</p>
-          ${p.image ? `<img src="${p.image}" alt="${p.title}">` : ''}
+          ${p.image ? `<img class="update-post-img" src="${p.image}" alt="${p.title}">` : ''}
+          <div class="update-post-body">
+            <div class="date">${new Date(p.date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</div>
+            <h3>${p.title}</h3>
+            <p>${p.body}</p>
+          </div>
         </div>`).join('');
     })
     .catch(() => {
