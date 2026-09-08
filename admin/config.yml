@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: simple
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "updates"
+    label: "Daily Updates"
+    files:
+      - file: "content/updates.json"
+        label: "Updates & News Feed"
+        name: "updates"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{title}} — {{date}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+              - { label: "Photo", name: "image", widget: "image", required: false }
+              - { label: "Post", name: "body", widget: "text" }

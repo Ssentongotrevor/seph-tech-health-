@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seph Tech and Health | Nutrition, Innovation &amp; Community Health — Uganda</title>
+<meta name="description" content="Seph Tech and Health, under SEYCO, manufactures affordable nutrition products and runs community health programmes across Uganda. Healthy Nutrition, Healthier Communities, Brighter Futures.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1B4332;
+    --forest-dark:#0F2D20;
+    --forest-light:#2D6A4F;
+    --gold:#C9A227;
+    --gold-light:#E8C766;
+    --cream:#FAF7F0;
+    --paper:#FFFFFF;
+    --ink:#1A1A18;
+    --ink-soft:#5A5A56;
+    --line:#E4DFD3;
+    --radius:10px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;line-height:1.15;color:var(--forest-dark);}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  section{padding:80px 0;}
+  .eyebrow{font-size:.8rem;letter-spacing:.03em;color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .lead{color:var(--ink-soft);max-width:640px;margin:14px 0 32px;font-size:1.05rem;}
+
+  /* ---------- NAV (fixed contrast) ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:var(--forest-dark);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:72px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:600;color:#fff;font-size:1.05rem;}
+  .brand img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+  .brand small{display:block;color:var(--gold-light);font-weight:400;font-size:.72rem;letter-spacing:.02em;}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{color:#EDE9DD;font-size:.92rem;font-weight:500;}
+  .nav-links a:hover{color:var(--gold-light);}
+  .nav-cta{
+    background:var(--gold);color:var(--forest-dark)!important;
+    padding:10px 18px;border-radius:999px;font-weight:700;font-size:.88rem;
+  }
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
+  .burger span{width:24px;height:2px;background:#fff;display:block;border-radius:2px;}
+
+  @media (max-width: 880px){
+    .nav-links{
+      position:fixed;top:72px;left:0;right:0;
+      background:var(--forest-dark);
+      flex-direction:column;align-items:flex-start;
+      gap:0;
+      max-height:0;overflow:hidden;
+      transition:max-height .25s ease;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-links.open{max-height:400px;}
+    .nav-links a{width:100%;padding:16px 24px;border-top:1px solid rgba(255,255,255,.07);color:#EDE9DD;}
+    .nav-cta{margin:16px 24px;display:inline-block;}
+    .burger{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(180deg,var(--forest) 0%, var(--forest-dark) 100%);color:#fff;padding:90px 0 70px;}
+  .hero .eyebrow{color:var(--gold-light);}
+  .hero h1{color:#fff;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;max-width:820px;}
+  .hero h1 em{color:var(--gold-light);font-style:normal;}
+  .hero p.lead{color:#D8D3C4;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
+  .btn{padding:12px 22px;border-radius:999px;font-weight:700;font-size:.92rem;display:inline-block;}
+  .btn-gold{background:var(--gold);color:var(--forest-dark);}
+  .btn-outline{border:1px solid rgba(255,255,255,.35);color:#fff;}
+  .tags{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px;font-size:.85rem;color:#B9C4BB;}
+
+  /* ---------- GENERIC CARD GRID ---------- */
+  .grid{display:grid;gap:24px;}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:repeat(2,1fr);}
+  @media (max-width:800px){.grid-3,.grid-2{grid-template-columns:1fr;}}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px;}
+
+  /* board */
+  .board-card{text-align:left;}
+  .board-avatar{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--forest);color:#fff;font-family:'Fraunces',serif;font-weight:600;
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1rem;
+  }
+  .board-role{color:var(--gold);font-size:.82rem;font-weight:700;margin-top:2px;}
+  .board-desc{color:var(--ink-soft);font-size:.92rem;margin-top:10px;}
+
+  /* products */
+  .product-card img{border-radius:var(--radius);margin-bottom:16px;aspect-ratio:4/3;object-fit:cover;}
+  .product-tag{color:var(--gold);font-size:.78rem;font-weight:700;margin-bottom:6px;}
+  .benefits{margin-top:14px;padding-left:18px;color:var(--ink-soft);font-size:.92rem;}
+
+  /* ---------- UPDATES & DONATIONS ---------- */
+  .updates-section{background:var(--forest-dark);color:#fff;}
+  .updates-section h2{color:#fff;}
+  .updates-section .eyebrow{color:var(--gold-light);}
+  .updates-section .lead{color:#C7C2B4;}
+  .update-post{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:var(--radius);
+    padding:22px;
+    margin-bottom:16px;
+  }
+  .update-post .date{color:var(--gold-light);font-size:.8rem;font-weight:700;letter-spacing:.02em;margin-bottom:6px;}
+  .update-post h3{color:#fff;font-size:1.15rem;margin-bottom:8px;}
+  .update-post p{color:#D3CFC2;font-size:.94rem;}
+  .update-post img{border-radius:8px;margin-top:12px;}
+  .donate-box{
+    margin-top:40px;background:var(--gold);color:var(--forest-dark);
+    border-radius:var(--radius);padding:32px;
+  }
+  .donate-box h3{color:var(--forest-dark);}
+  .donate-box p{margin:10px 0 18px;color:#3A2E0A;}
+  .donate-box .btn-outline{border:1.5px solid var(--forest-dark);color:var(--forest-dark);}
+
+  /* footer / contact reused from original */
+  footer{background:var(--forest-dark);color:#C7C2B4;padding:50px 0 24px;font-size:.88rem;}
+  footer h4{color:#fff;font-size:.9rem;margin-bottom:10px;}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;margin-bottom:30px;}
+  @media (max-width:700px){.foot-grid{grid-template-columns:1fr;}}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font-size:.8rem;color:#8C8778;}
+
+  .section-title-row{margin-bottom:36px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#home" class="brand">
+      <img src="images/IMG-20260710-WA0028.jpg.jpeg" alt="Seph Tech and Health logo">
+      <span>Seph Tech &amp; Health<br><small>SEYCO · Uganda</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#services">Services</a>
+      <a href="#board">Board</a>
+      <a href="#updates">Updates</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Shop Products</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="eyebrow">SEYCO · Seph Tanner Youth Job Creation Organization</div>
+    <h1>Transforming lives through <em>nutrition</em>, innovation and community health.</h1>
+    <p class="lead">A Ugandan social enterprise manufacturing affordable, high-quality nutrition products and running community health programmes, research and youth empowerment initiatives — because every family deserves food that is safe, nourishing, and within reach.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn btn-gold">Shop Products</a>
+      <a href="#contact" class="btn btn-outline">Become a Partner</a>
+      <a href="#updates" class="btn btn-outline">Invest With Us</a>
+    </div>
+    <div class="tags">
+      <span>Nutrition manufacturing</span><span>Community health programmes</span><span>Youth empowerment</span><span>Research &amp; innovation</span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About Us</div>
+    <h2>Who we are</h2>
+    <p class="lead">Seph Tech and Health is a health and nutrition company operating under SEYCO. We manufacture nutritious food products, promote healthy living, support disease prevention, and work with communities to fight malnutrition, non-communicable diseases, and food insecurity.</p>
+    <div class="grid grid-2">
+      <div class="card"><h3>Vision</h3><p class="board-desc">To become Africa's leading provider of innovative nutrition and community health solutions that improve lives and create healthier communities.</p></div>
+      <div class="card"><h3>Mission</h3><p class="board-desc">To develop and provide affordable, high-quality nutritional products and health solutions while empowering communities through education, innovation, partnerships, and sustainable development.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="products" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="eyebrow">Our Products</div>
+    <h2>Nutrition you can trust, made in Uganda</h2>
+    <div class="grid grid-2" style="margin-top:32px;">
+      <div class="card product-card">
+        <img src="images/PXL_20260619_095848456.PORTRAIT.jpg.jpeg" alt="Seph Nutri Porridge">
+        <div class="product-tag">Flagship product</div>
+        <h3>Seph Nutri Porridge</h3>
+        <p class="board-desc">A highly nutritious multi-grain porridge formulated to support healthy growth, energy, and overall well-being.</p>
+        <ul class="benefits"><li>Rich in vitamins and minerals</li><li>Supports immunity</li><li>Promotes healthy growth</li></ul>
+      </div>
+      <div class="card product-card">
+        <img src="images/PXL_20260613_044055308.PORTRAIT.jpg.jpeg" alt="Seph Diabetic Care Porridge">
+        <div class="product-tag">Specialised care</div>
+        <h3>Seph Diabetic Care Porridge</h3>
+        <p class="board-desc">A carefully formulated porridge designed for people living with diabetes and those seeking healthier dietary choices.</p>
+        <ul class="benefits"><li>Supports healthy blood sugar management</li><li>High in dietary fibre</li><li>Sustained energy</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">Our Services</div>
+    <h2>Beyond products — a full health partner</h2>
+    <div class="grid grid-3" style="margin-top:32px;">
+      <div class="card"><h3 style="font-size:1.05rem;">Nutrition Consultancy</h3></div>
+      <div class="card"><h3 style="font-size:1.05rem;">Community Health Education</h3></div>
+      <div class="card"><h3 style="font-size:1.05rem;">Nutrition Screening Campaigns</h3></div>
+      <div class="card"><h3 style="font-size:1.05rem;">Research &amp; Product Development</h3></div>
+      <div class="card"><h3 style="font-size:1.05rem;">Youth Skills Development</h3></div>
+      <div class="card"><h3 style="font-size:1.05rem;">Corporate Wellness Programs</h3></div>
+    </div>
+  </div>
+</section>
+
+<section id="board" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="eyebrow">Leadership</div>
+    <h2>Board of Directors</h2>
+    <div class="grid grid-3" style="margin-top:32px;">
+      <div class="card board-card">
+        <div class="board-avatar">JS</div>
+        <h3 style="font-size:1.05rem;">Joseph Ssentongo</h3>
+        <div class="board-role">Chairperson &amp; Chief Executive Officer</div>
+        <p class="board-desc">Provides strategic leadership, oversees innovation, partnerships, product development, business growth, and community impact initiatives. Also serves as Chairperson, Uganda Scouts Association Youth Forum (2025–2029).</p>
+      </div>
+      <div class="card board-card">
+        <div class="board-avatar">KR</div>
+        <h3 style="font-size:1.05rem;">Prof. Kalyesubula Robert</h3>
+        <div class="board-role">Board Member</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="updates-section" id="updates">
+  <div class="wrap">
+    <div class="eyebrow">Latest From The Field</div>
+    <h2>Updates &amp; News</h2>
+    <p class="lead">Daily posts about outreach events, product launches, training and campaigns.</p>
+    <div id="updatesFeed">
+      <p style="color:#C7C2B4;">Loading updates…</p>
+    </div>
+
+    <div class="donate-box">
+      <h3>Invest in Uganda's nutrition future</h3>
+      <p>We welcome partners and donors who want to support manufacturing, research and community nutrition programmes. Reach out and let us know how you'd like to help.</p>
+      <a href="#contact" class="btn btn-outline">Get In Touch To Donate</a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="eyebrow">Gallery</div>
+    <h2>Our story, in pictures</h2>
+    <p class="lead">A growing photo and video record of outreaches, launches, training and campaigns.</p>
+    <div class="grid grid-3">
+      <div><img src="images/PXL_20260625_091007648.PORTRAIT.jpg.jpeg" alt="Community Outreach" style="border-radius:10px;"></div>
+      <div><img src="images/PXL_20260623_092625600.jpg.jpeg" alt="Product Launch" style="border-radius:10px;"></div>
+      <div><img src="images/PXL_20260620_123925654.PORTRAIT.jpg.jpeg" alt="Training Session" style="border-radius:10px;"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="eyebrow">Get In Touch</div>
+    <h2>Let's build healthier communities together</h2>
+    <div class="grid grid-2" style="margin-top:32px;align-items:start;">
+      <div>
+        <p class="board-desc">Seph Tech and Health<br>Under SEYCO — Seph Tanner Youth Job Creation Organization</p>
+        <p class="board-desc" style="margin-top:14px;">Tel: +256 773 895 317 · +256 701 764 705<br>Email: info@sephtechandhealth.org</p>
+      </div>
+      <form class="card" name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+        <div style="margin-bottom:12px;"><input name="name" placeholder="Full name" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><input name="email" placeholder="Email" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><input name="reason" placeholder="I'm reaching out about (e.g. donating)" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><textarea name="message" placeholder="Message" rows="4" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></textarea></div>
+        <button type="submit" class="btn btn-gold" style="border:0;cursor:pointer;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">© Seph Tech and Health. Under SEYCO — Seph Tanner Youth Job Creation Organization. All rights reserved. Kampala, Uganda.</div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const burger = document.getElementById('burgerBtn');
+  const links = document.getElementById('navLinks');
+  burger.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // load daily updates from content/updates.json (edited via /admin)
+  fetch('content/updates.json')
+    .then(r => r.json())
+    .then(data => {
+      const feed = document.getElementById('updatesFeed');
+      const posts = (data.posts || []).slice().sort((a,b) => new Date(b.date) - new Date(a.date));
+      if (!posts.length){ feed.innerHTML = '<p style="color:#C7C2B4;">No updates posted yet.</p>'; return; }
+      feed.innerHTML = posts.map(p => `
+        <div class="update-post">
+          <div class="date">${new Date(p.date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</div>
+          <h3>${p.title}</h3>
+          <p>${p.body}</p>
+          ${p.image ? `<img src="${p.image}" alt="${p.title}">` : ''}
+        </div>`).join('');
+    })
+    .catch(() => {
+      document.getElementById('updatesFeed').innerHTML = '<p style="color:#C7C2B4;">Updates coming soon.</p>';
+    });
+</script>
+</body>
+</html>
