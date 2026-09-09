@@ -39,7 +39,6 @@
   .eyebrow{font-size:.8rem;letter-spacing:.03em;color:var(--gold);font-weight:700;margin-bottom:8px;}
   .lead{color:var(--ink-soft);max-width:640px;margin:14px 0 32px;font-size:1.05rem;}
 
-  /* ---------- NAV (fixed contrast) ---------- */
   header{
     position:sticky;top:0;z-index:100;
     background:var(--forest-dark);
@@ -78,7 +77,6 @@
     .burger{display:flex;}
   }
 
-  /* ---------- HERO ---------- */
   .hero{background:linear-gradient(180deg,var(--forest) 0%, var(--forest-dark) 100%);color:#fff;padding:90px 0 70px;}
   .hero .eyebrow{color:var(--gold-light);}
   .hero h1{color:#fff;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;max-width:820px;}
@@ -90,7 +88,6 @@
   .btn-outline{border:1px solid rgba(255,255,255,.35);color:#fff;}
   .tags{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px;font-size:.85rem;color:#B9C4BB;}
 
-  /* ---------- GENERIC CARD GRID ---------- */
   .grid{display:grid;gap:24px;}
   .grid-3{grid-template-columns:repeat(3,1fr);}
   .grid-2{grid-template-columns:repeat(2,1fr);}
@@ -98,7 +95,6 @@
 
   .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px;}
 
-  /* board */
   .board-card{text-align:left;}
   .board-avatar{
     width:52px;height:52px;border-radius:50%;
@@ -108,18 +104,15 @@
   .board-role{color:var(--gold);font-size:.82rem;font-weight:700;margin-top:2px;}
   .board-desc{color:var(--ink-soft);font-size:.92rem;margin-top:10px;}
 
-  /* products */
   .product-card img{border-radius:var(--radius);margin-bottom:16px;aspect-ratio:4/3;object-fit:cover;}
   .product-tag{color:var(--gold);font-size:.78rem;font-weight:700;margin-bottom:6px;}
   .benefits{margin-top:14px;padding-left:18px;color:var(--ink-soft);font-size:.92rem;}
 
-  /* ---------- UPDATES & DONATIONS ---------- */
   .updates-section{background:var(--forest-dark);color:#fff;}
   .updates-section h2{color:#fff;}
   .updates-section .eyebrow{color:var(--gold-light);}
   .updates-section .lead{color:#C7C2B4;}
   .update-post{
-.update-post{
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.1);
     border-radius:var(--radius);
@@ -139,7 +132,6 @@
   .donate-box p{margin:10px 0 18px;color:#3A2E0A;}
   .donate-box .btn-outline{border:1.5px solid var(--forest-dark);color:var(--forest-dark);}
 
-  /* footer / contact reused from original */
   footer{background:var(--forest-dark);color:#C7C2B4;padding:50px 0 24px;font-size:.88rem;}
   footer h4{color:#fff;font-size:.9rem;margin-bottom:10px;}
   .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;margin-bottom:30px;}
@@ -266,8 +258,9 @@
       <p style="color:#C7C2B4;">Loading updates…</p>
     </div>
 
-    
-      </div>
+    <div class="donate-box">
+      <h3>Invest in Uganda's nutrition future</h3>
+      <p>We welcome partners and donors who want to support manufacturing, research and community nutrition programmes. Reach out and let us know how you'd like to help.</p>
       <a href="#contact" class="btn btn-outline">Get In Touch To Donate</a>
     </div>
   </div>
@@ -322,7 +315,6 @@
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
   // load daily updates from content/updates.json (edited via /admin)
-  // load daily updates from content/updates.json (edited via /admin)
   function resolveImagePath(img){
     if (!img) return '';
     if (img.startsWith('http') || img.startsWith('/')) return img;
@@ -347,17 +339,20 @@
     .catch(() => {
       document.getElementById('updatesFeed').innerHTML = '<p style="color:#C7C2B4;">Updates coming soon.</p>';
     });
-// handle contact form submission via AJAX so it never navigates away
+
+  // handle contact form submission via AJAX so it never navigates away
   const contactForm = document.getElementById('contactForm');
   if (contactForm){
     contactForm.addEventListener('submit', function(e){
       e.preventDefault();
       const status = document.getElementById('contactStatus');
       const data = new FormData(contactForm);
+      const encoded = new URLSearchParams();
+      for (const pair of data.entries()) { encoded.append(pair[0], pair[1]); }
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString()
+        body: encoded.toString()
       })
       .then(() => {
         status.style.color = 'var(--forest)';
@@ -370,8 +365,7 @@
       });
     });
   }
-  
 </script>
-  
+
 </body>
 </html>
