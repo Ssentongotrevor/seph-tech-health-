@@ -295,13 +295,14 @@
         <p class="board-desc">Seph Tech and Health<br>Under SEYCO — Seph Tanner Youth Job Creation Organization</p>
         <p class="board-desc" style="margin-top:14px;">Tel: +256772895317 · +256 701 764 705<br>Email: info@sephtechandhealth.org</p>
       </div>
-      <form class="card" name="contact" method="POST" data-netlify="true">
+      <form class="card" name="contact" method="POST" data-netlify="true" id="contactForm">
         <input type="hidden" name="form-name" value="contact">
-        <div style="margin-bottom:12px;"><input name="name" placeholder="Full name" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></div>
-        <div style="margin-bottom:12px;"><input name="email" placeholder="Email" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><input name="name" placeholder="Full name" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></div>
+        <div style="margin-bottom:12px;"><input name="email" type="email" placeholder="Email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></div>
         <div style="margin-bottom:12px;"><input name="reason" placeholder="I'm reaching out about (e.g. donating)" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></div>
         <div style="margin-bottom:12px;"><textarea name="message" placeholder="Message" rows="4" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;"></textarea></div>
         <button type="submit" class="btn btn-gold" style="border:0;cursor:pointer;">Send Message</button>
+        <p id="contactStatus" style="margin-top:10px;font-size:.9rem;"></p>
       </form>
     </div>
   </div>
@@ -346,8 +347,7 @@
     .catch(() => {
       document.getElementById('updatesFeed').innerHTML = '<p style="color:#C7C2B4;">Updates coming soon.</p>';
     });
-</script>
-  // handle contact form submission via AJAX so it never navigates away
+// handle contact form submission via AJAX so it never navigates away
   const contactForm = document.getElementById('contactForm');
   if (contactForm){
     contactForm.addEventListener('submit', function(e){
@@ -370,5 +370,8 @@
       });
     });
   }
+  
+</script>
+  
 </body>
 </html>
